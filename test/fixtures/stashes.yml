@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  owner: one
+  material: one
+  quantity: 1
+
+two:
+  owner: two
+  material: two
+  quantity: 1

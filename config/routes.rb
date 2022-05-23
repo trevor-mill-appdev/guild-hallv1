@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :stashes
   resources :mobs
   resources :raiders
   resources :materials
