@@ -10,11 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_23_180304) do
+ActiveRecord::Schema.define(version: 2022_05_23_180955) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "plpgsql"
+
+  create_table "bulletins", force: :cascade do |t|
+    t.bigint "guild_id", null: false
+    t.bigint "author_id", null: false
+    t.text "body"
+    t.string "priority"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["author_id"], name: "index_bulletins_on_author_id"
+    t.index ["guild_id"], name: "index_bulletins_on_guild_id"
+  end
 
   create_table "guilds", force: :cascade do |t|
     t.bigint "admin_id"
@@ -98,6 +109,8 @@ ActiveRecord::Schema.define(version: 2022_05_23_180304) do
     t.index ["voter_id"], name: "index_votes_on_voter_id"
   end
 
+  add_foreign_key "bulletins", "guilds"
+  add_foreign_key "bulletins", "users", column: "author_id"
   add_foreign_key "guilds", "users", column: "admin_id"
   add_foreign_key "mobs", "users", column: "owner_id"
   add_foreign_key "proposals", "guilds"
