@@ -10,11 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_23_175458) do
+ActiveRecord::Schema.define(version: 2022_05_23_175905) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "plpgsql"
+
+  create_table "guilds", force: :cascade do |t|
+    t.bigint "admin_id"
+    t.integer "prop_threshold"
+    t.boolean "private"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["admin_id"], name: "index_guilds_on_admin_id"
+  end
 
   create_table "materials", force: :cascade do |t|
     t.citext "name"
@@ -68,6 +77,7 @@ ActiveRecord::Schema.define(version: 2022_05_23_175458) do
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
+  add_foreign_key "guilds", "users", column: "admin_id"
   add_foreign_key "mobs", "users", column: "owner_id"
   add_foreign_key "raiders", "users", column: "owner_id"
   add_foreign_key "stashes", "materials"

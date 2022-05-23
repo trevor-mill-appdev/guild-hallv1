@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Guilds</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>References</th>
+      <th>Prop threshold</th>
+      <th>Private</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @guilds.each do |guild| %>
+      <tr>
+        <td><%= guild.references %></td>
+        <td><%= guild.prop_threshold %></td>
+        <td><%= guild.private %></td>
+        <td><%= link_to 'Show', guild %></td>
+        <td><%= link_to 'Edit', edit_guild_path(guild) %></td>
+        <td><%= link_to 'Destroy', guild, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Guild', new_guild_path %>

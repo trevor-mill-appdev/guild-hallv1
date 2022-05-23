@@ -1,0 +1,32 @@
+<%= form_with(model: guild) do |form| %>
+  <% if guild.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(guild.errors.count, "error") %> prohibited this guild from being saved:</h2>
+
+      <ul>
+        <% guild.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :references %>
+    <%= form.text_field :references %>
+  </div>
+
+  <div class="field">
+    <%= form.label :prop_threshold %>
+    <%= form.number_field :prop_threshold %>
+  </div>
+
+  <div class="field">
+    <%= form.label :private %>
+    <%= form.check_box :private %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

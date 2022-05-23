@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  references: 
+  prop_threshold: 1
+  private: false
+
+two:
+  references: 
+  prop_threshold: 1
+  private: false
