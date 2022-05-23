@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :mobs
   resources :raiders
   resources :materials
   devise_for :users

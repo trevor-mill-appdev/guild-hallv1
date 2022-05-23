@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Owner:</strong>
+  <%= @mob.owner_id %>
+</p>
+
+<p>
+  <strong>Serial:</strong>
+  <%= @mob.serial %>
+</p>
+
+<p>
+  <strong>Image url:</strong>
+  <%= @mob.image_url %>
+</p>
+
+<%= link_to 'Edit', edit_mob_path(@mob) %> |
+<%= link_to 'Back', mobs_path %>
