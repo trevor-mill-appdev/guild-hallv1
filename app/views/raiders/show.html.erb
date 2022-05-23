@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Serial:</strong>
+  <%= @raider.serial %>
+</p>
+
+<p>
+  <strong>Image url:</strong>
+  <%= @raider.image_url %>
+</p>
+
+<p>
+  <strong>Owner:</strong>
+  <%= @raider.owner_id %>
+</p>
+
+<%= link_to 'Edit', edit_raider_path(@raider) %> |
+<%= link_to 'Back', raiders_path %>
