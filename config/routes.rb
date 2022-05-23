@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :proposals
+  resources :votes
   resources :guilds
   resources :stashes
   resources :mobs

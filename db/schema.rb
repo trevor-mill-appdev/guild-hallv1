@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_23_175905) do
+ActiveRecord::Schema.define(version: 2022_05_23_180304) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -39,6 +39,17 @@ ActiveRecord::Schema.define(version: 2022_05_23_175905) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["owner_id"], name: "index_mobs_on_owner_id"
+  end
+
+  create_table "proposals", force: :cascade do |t|
+    t.bigint "proposer_id", null: false
+    t.bigint "guild_id", null: false
+    t.string "status"
+    t.text "body"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["guild_id"], name: "index_proposals_on_guild_id"
+    t.index ["proposer_id"], name: "index_proposals_on_proposer_id"
   end
 
   create_table "raiders", force: :cascade do |t|
@@ -77,9 +88,23 @@ ActiveRecord::Schema.define(version: 2022_05_23_175905) do
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
+  create_table "votes", force: :cascade do |t|
+    t.bigint "voter_id", null: false
+    t.bigint "proposal_id", null: false
+    t.string "value"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["proposal_id"], name: "index_votes_on_proposal_id"
+    t.index ["voter_id"], name: "index_votes_on_voter_id"
+  end
+
   add_foreign_key "guilds", "users", column: "admin_id"
   add_foreign_key "mobs", "users", column: "owner_id"
+  add_foreign_key "proposals", "guilds"
+  add_foreign_key "proposals", "users", column: "proposer_id"
   add_foreign_key "raiders", "users", column: "owner_id"
   add_foreign_key "stashes", "materials"
   add_foreign_key "stashes", "users", column: "owner_id"
+  add_foreign_key "votes", "proposals"
+  add_foreign_key "votes", "users", column: "voter_id"
 end
