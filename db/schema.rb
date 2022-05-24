@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(version: 2022_05_23_180955) do
   create_table "mobs", force: :cascade do |t|
     t.bigint "owner_id", null: false
     t.string "serial"
-    t.string "image_url"
+    t.string "image"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["owner_id"], name: "index_mobs_on_owner_id"
@@ -65,7 +65,7 @@ ActiveRecord::Schema.define(version: 2022_05_23_180955) do
 
   create_table "raiders", force: :cascade do |t|
     t.string "serial"
-    t.string "image_url"
+    t.string "image"
     t.bigint "owner_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -89,7 +89,7 @@ ActiveRecord::Schema.define(version: 2022_05_23_180955) do
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.citext "username"
-    t.string "image_url"
+    t.string "image"
     t.citext "wallet"
     t.integer "guild_id"
     t.datetime "created_at", precision: 6, null: false

@@ -37,7 +37,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.1]
 
       # t.string :username
       t.citext :username, unique: true
-      t.string :image_url
+      t.string :image
       # t.string :wallet
       t.citext :wallet, unique: true
       t.integer :guild_id
