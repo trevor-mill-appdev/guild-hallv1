@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 2022_05_23_180955) do
     t.bigint "admin_id"
     t.integer "prop_threshold"
     t.boolean "private"
+    t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["admin_id"], name: "index_guilds_on_admin_id"

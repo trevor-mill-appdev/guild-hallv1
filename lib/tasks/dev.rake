@@ -27,19 +27,33 @@ task sample_data: :environment do
       email: "#{username}@example.com",
       password: "password",
       username: username.downcase,
-      guild_id: [1, 2, 3].sample,
+      guild_id: [1, 2].sample,
       wallet: "sample_wallet_address",
       image: "https://robohash.org/#{rand(9999)}"  
     )
   end
 
+  # add alice, bob example accounts as guild admins
+  User.create(
+    email: "alice@example.com",
+    password: "password",
+    username: "alice",
+    guild_id: 1,
+    wallet: "0x3dBa039281032Ee619E7b4C0b1E7C9A4d56187AA",
+    image: "https://robohash.org/#{rand(9999)}"
+  )
+
+  User.create(
+    email: "bob@example.com",
+    password: "password",
+    username: "bob",
+    guild_id: 2,
+    wallet: "0x71aa6336ae01c1293018993a505e9f368b68b518",
+    image: "https://robohash.org/#{rand(9999)}"
+  )
+  
   users = User.all
 
-  # add alice, bob, charlie example accounts as guild admins
-  admins = Array.new
-  admins << "alice"
-  admins << "bob"
-  admins << "charlie"
+  # create 2 guilds with alice and bob as admins
 
-  p(admins)
 end
