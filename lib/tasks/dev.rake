@@ -17,42 +17,25 @@ task sample_data: :environment do
 
   usernames = Array.new { Faker::Name.first_name }
 
-  # create 10 random users
-  10.times do |user|
+  15.times do |username|
     usernames << Faker::Name.first_name
   end
 
-    usernames.each do |username|
-      User.create(
-        email: "#{username}@example.com",
-        password: "password",
-        username: username.downcase,
-        guild_id: [1, 2].sample,
-        wallet: "sample_wallet_address",
-        image: "https://robohash.org/#{rand(9999)}"  
-      )
+
+
+   usernames.each do |username|
+    User.create(
+      email: "#{username}@example.com",
+      password: "password",
+      username: username.downcase,
+      image: "https://robohash.org/#{rand(9999)}",
+      wallet: "sample_wallet_address",
+      guild_id: rand(2)
+    )
     end
 
-    # add alice, bob example accounts as guild admins
-    User.create(
-      email: "alice@example.com",
-      password: "password",
-      username: "alice",
-      guild_id: 1,
-      wallet: "0x3dBa039281032Ee619E7b4C0b1E7C9A4d56187AA",
-      image: "https://robohash.org/#{rand(9999)}"
-    )
-
-    User.create(
-      email: "bob@example.com",
-      password: "password",
-      username: "bob",
-      guild_id: 2,
-      wallet: "0x71aa6336ae01c1293018993a505e9f368b68b518",
-      image: "https://robohash.org/#{rand(9999)}"
-    )
-    
   users = User.all
+  p(users)
 
   # create materials
   Material.create(
@@ -86,6 +69,6 @@ task sample_data: :environment do
   
 
   p(materials)
-  p(users)
+  # p(users)
 
 end

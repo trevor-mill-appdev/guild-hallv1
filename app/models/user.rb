@@ -15,5 +15,6 @@ class User < ApplicationRecord
   belongs_to :guild, foreign_key: :guild_id, counter_cache: true
 
   validates :username, presence: true, uniqueness: true
+  validates :password, presence: true
   
 end
