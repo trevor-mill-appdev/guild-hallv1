@@ -13,5 +13,7 @@ class User < ApplicationRecord
   has_many :mobs, foreign_key: :owner_id, dependent: :destroy 
 
   belongs_to :guild, foreign_key: :guild_id, counter_cache: true
+
+  validates :username, presence: true, uniqueness: true
   
 end
