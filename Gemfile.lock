@@ -1,4 +1,12 @@
 GIT
+  remote: https://github.com/faker-ruby/faker.git
+  revision: 425581295d59839e1c4c19a0f4482886d1e9f373
+  branch: master
+  specs:
+    faker (2.21.0)
+      i18n (>= 1.8.11, < 2)
+
+GIT
   remote: https://github.com/firstdraft/web_git.git
   revision: 934e081e566dc25e6510b4c8780330e7198b6e5e
   specs:
@@ -118,8 +126,6 @@ GEM
       warden (~> 1.2.3)
     diffy (3.4.0)
     erubi (1.10.0)
-    faker (2.21.0)
-      i18n (>= 1.8.11, < 2)
     ffi (1.15.5)
     git (1.10.2)
       rchardet (~> 1.8)
@@ -328,7 +334,7 @@ DEPENDENCIES
   byebug
   capybara (>= 3.26)
   devise
-  faker
+  faker!
   jbuilder (~> 2.7)
   listen (~> 3.3)
   pg (~> 1.1)

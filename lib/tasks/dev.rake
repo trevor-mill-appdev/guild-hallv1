@@ -1,6 +1,8 @@
 desc "Fill the database tables with sample data"
 
 task sample_data: :environment do
+  require 'faker'
+  
   p "Beep boop beep...creating sample data"
 
   starting = Time.now
