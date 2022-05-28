@@ -30,7 +30,7 @@ task sample_data: :environment do
     email: "bob@example.com",
     password: "password",
     image: "https://robohash.org/#{rand(9999)}",
-    wallet: "",
+    wallet: "0x3dBa039281032Ee619E7b4C0b1E7C9A4d56187AA",
     guild_id: 1
   )
 
@@ -39,7 +39,7 @@ task sample_data: :environment do
     email: "alice@example.com",
     password: "password",
     image: "https://robohash.org/#{9999}",
-    wallet: "",
+    wallet: "0x71AA6336aE01c1293018993a505e9F368b68B518",
     guild_id: 2
   )
 
@@ -87,9 +87,22 @@ task sample_data: :environment do
   materials = Material.all
 
   # create a guild
-  
+  Guild.create(
+    admin_id: User.where(:username => "bob").first.id,
+    prop_threshold: rand(3),
+    private: false,
+    name: "Bob\'s Burgers",
+  )
 
-  p(materials)
+  Guild.create(
+    admin_id: User.where(:username => "alice").first.id,
+    prop_threshold: rand(3),
+    private: true,
+    name: "Alice\'s Wonderland"
+  )
+  guilds = Guild.all
+  
+  
 
 
 end
