@@ -19,11 +19,31 @@ task sample_data: :environment do
 
   usernames = Array.new { Faker::Name.first_name }
 
-  15.times do |username|
+  10.times do |username|
     usernames << Faker::Name.first_name
   end
 
+  # generate set users for guild admin accounts
 
+  User.create(
+    username: "bob",
+    email: "bob@example.com",
+    password: "password",
+    image: "https://robohash.org/#{rand(9999)}",
+    wallet: "",
+    guild_id: 1
+  )
+
+  User.create(
+    username: "alice",
+    email: "alice@example.com",
+    password: "password",
+    image: "https://robohash.org/#{9999}",
+    wallet: "",
+    guild_id: 2
+  )
+
+  # generate random users sorted between the guilds
 
    usernames.each do |username|
     User.create(
@@ -37,7 +57,6 @@ task sample_data: :environment do
     end
 
   users = User.all
-  p(users)
 
   # create materials
   Material.create(
@@ -71,6 +90,6 @@ task sample_data: :environment do
   
 
   p(materials)
-  # p(users)
+
 
 end
