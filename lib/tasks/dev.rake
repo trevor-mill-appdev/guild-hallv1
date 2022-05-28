@@ -105,14 +105,23 @@ task sample_data: :environment do
   # create raiders and mobs for users
   users.each do |user|
     rand(5).times do
-      user.raider.create(
+      user.raiders.create(
         serial: rand(9999),
-        image: "",
+        image: "https://picsum.photos/200/200",
         owner_id: user.id
+      )
+    end
+
+    rand(3).times do
+      user.mobs.create(
+        owner_id: user.id,
+        serial: rand(9999),
+        image: ""
       )
     end
   end
 
   raiders = Raider.all
-  p(raiders)
+  mobs = Mob.all
+  p(mobs)
 end
