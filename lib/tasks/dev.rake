@@ -107,7 +107,7 @@ task sample_data: :environment do
     rand(5).times do
       user.raiders.create(
         serial: rand(9999),
-        image: "https://picsum.photos/200/200",
+        image: "https://loremflickr.com/320/320?random=#{rand(999)}",
         owner_id: user.id
       )
     end
@@ -116,12 +116,27 @@ task sample_data: :environment do
       user.mobs.create(
         owner_id: user.id,
         serial: rand(9999),
-        image: ""
+        image: "https://placekitten.com"
+      )
+    end
+  end
+
+  
+
+  # create stashes for users
+  users.each do |user|
+    materials.each do |material|
+      user.stashes.create(
+        owner_id: user.id,
+        material_id: material.id,
+        quantity: rand(100)
       )
     end
   end
 
   raiders = Raider.all
   mobs = Mob.all
-  p(mobs)
+  stashes = Stash.all
+
+  
 end

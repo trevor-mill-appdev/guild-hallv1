@@ -16,7 +16,7 @@
     <% @raiders.each do |raider| %>
       <tr>
         <td><%= raider.serial %></td>
-        <td><%= raider.image_url %></td>
+        <td><%= raider.image %></td>
         <td><%= raider.owner_id %></td>
         <td><%= link_to 'Show', raider %></td>
         <td><%= link_to 'Edit', edit_raider_path(raider) %></td>
