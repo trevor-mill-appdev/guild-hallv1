@@ -138,5 +138,12 @@ task sample_data: :environment do
   mobs = Mob.all
   stashes = Stash.all
 
-  
+  ending = Time.now
+  p "It took #{(ending - starting).to_i} seconds to create sample data."
+  p "There are now #{User.count} users."
+  p "There are now #{Guild.count} guilds."
+  p "There are now #{Raider.count} raiders."
+  p "There are now #{Mob.count} mobs."
+  p "There are now #{Stash.count} stashes."
+
 end
