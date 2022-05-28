@@ -102,7 +102,17 @@ task sample_data: :environment do
   )
   guilds = Guild.all
   
-  
+  # create raiders and mobs for users
+  users.each do |user|
+    rand(5).times do
+      user.raider.create(
+        serial: rand(9999),
+        image: "",
+        owner_id: user.id
+      )
+    end
+  end
 
-
+  raiders = Raider.all
+  p(raiders)
 end
