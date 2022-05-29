@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  proposer: one
+  guild: one
+  status: MyString
+  body: MyText
+
+two:
+  proposer: two
+  guild: two
+  status: MyString
+  body: MyText

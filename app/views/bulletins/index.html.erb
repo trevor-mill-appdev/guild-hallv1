@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Bulletins</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Guild</th>
+      <th>Author</th>
+      <th>Body</th>
+      <th>Priority</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @bulletins.each do |bulletin| %>
+      <tr>
+        <td><%= bulletin.guild_id %></td>
+        <td><%= bulletin.author_id %></td>
+        <td><%= bulletin.body %></td>
+        <td><%= bulletin.priority %></td>
+        <td><%= link_to 'Show', bulletin %></td>
+        <td><%= link_to 'Edit', edit_bulletin_path(bulletin) %></td>
+        <td><%= link_to 'Destroy', bulletin, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Bulletin', new_bulletin_path %>

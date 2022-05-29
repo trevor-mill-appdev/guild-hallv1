@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>References:</strong>
+  <%= @guild.references %>
+</p>
+
+<p>
+  <strong>Prop threshold:</strong>
+  <%= @guild.prop_threshold %>
+</p>
+
+<p>
+  <strong>Private:</strong>
+  <%= @guild.private %>
+</p>
+
+<%= link_to 'Edit', edit_guild_path(@guild) %> |
+<%= link_to 'Back', guilds_path %>
