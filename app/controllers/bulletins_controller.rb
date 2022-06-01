@@ -8,6 +8,7 @@ class BulletinsController < ApplicationController
 
   # GET /bulletins/1 or /bulletins/1.json
   def show
+    authorize @bulletin
   end
 
   # GET /bulletins/new
@@ -17,6 +18,7 @@ class BulletinsController < ApplicationController
 
   # GET /bulletins/1/edit
   def edit
+    authorize @bulletin
   end
 
   # POST /bulletins or /bulletins.json
