@@ -11,4 +11,8 @@ class GuildPolicy
       !guild.private?
     
   end
+
+  def edit?
+    user == guild.owner
+  end
 end

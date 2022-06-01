@@ -8,9 +8,7 @@ class GuildsController < ApplicationController
 
   # GET /guilds/1 or /guilds/1.json
   def show
-    unless GuildPolicy.new(current_user, @guild).show?
-      raise Pundit::NotAuthorizedError, "not allowed"
-    end
+    authorize @guild
   end
 
   # GET /guilds/new
@@ -20,6 +18,7 @@ class GuildsController < ApplicationController
 
   # GET /guilds/1/edit
   def edit
+    authorize @guild
   end
 
   # POST /guilds or /guilds.json
