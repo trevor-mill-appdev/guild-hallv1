@@ -11,16 +11,16 @@
         <% if user_signed_in? %>
           <% if current_user.guild_id? %>
             <li class="nav-item">
-              <a class="nav-item" href="/guilds/<%= current_user.guild.id %>"><%= current_user.guild.name%></a>
+              <a class="nav-link" href="/guilds/<%= current_user.guild.id %>"><%= current_user.guild.name%></a>
             </li>
           <% else %>
             <li class="nav-item">
-              <a class="nav-item" href="/guilds">All Guilds</a>
+              <a class="nav-link" href="/guilds">All Guilds</a>
             </li>
           <%end %>
 
           <li class="nav-item">
-            <a class="nav-item" href="<%= current_user.username %>/inbox">Inbox</a>
+            <a class="nav-link" href="<%= current_user.username %>/inbox">Inbox</a>
           </li>
         <% end %>
       </ul>
@@ -38,11 +38,11 @@
           </li>
         <% else %>
           <li class="nav-item">
-            <%= link_to "Sign in", new_user_session_path, class: "nav-item" %>
+            <%= link_to "Sign in", new_user_session_path, class: "nav-link" %>
           </li>
 
           <li class="nav-item">
-            <%= link_to "Sign up", new_user_registration_path, class: "nav-item" %>
+            <%= link_to "Sign up", new_user_registration_path, class: "nav-link" %>
           </li>
         <% end %>
       </ul>
