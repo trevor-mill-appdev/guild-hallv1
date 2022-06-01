@@ -5,9 +5,10 @@
 <table>
   <thead>
     <tr>
-      <th>References</th>
+      <th>Name</th>
       <th>Prop threshold</th>
       <th>Private</th>
+      <th>Admin</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -15,9 +16,10 @@
   <tbody>
     <% @guilds.each do |guild| %>
       <tr>
-        <td><%= guild.references %></td>
+        <td><%= guild.name %></td>
         <td><%= guild.prop_threshold %></td>
         <td><%= guild.private %></td>
+        <td><%= guild.owner.username %></td>
         <td><%= link_to 'Show', guild %></td>
         <td><%= link_to 'Edit', edit_guild_path(guild) %></td>
         <td><%= link_to 'Destroy', guild, method: :delete, data: { confirm: 'Are you sure?' } %></td>

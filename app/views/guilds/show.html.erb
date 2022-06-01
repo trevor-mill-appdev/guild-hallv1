@@ -1,8 +1,13 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>References:</strong>
-  <%= @guild.references %>
+  <strong>Name:</strong>
+  <%= @guild.name %>
+</p>
+
+<p>
+  <strong>Admin:</strong>
+  <%= @guild.owner.username %>
 </p>
 
 <p>

@@ -4,19 +4,23 @@ class BulletinsController < ApplicationController
   # GET /bulletins or /bulletins.json
   def index
     @bulletins = Bulletin.all
+    authorize @bulletin
   end
 
   # GET /bulletins/1 or /bulletins/1.json
   def show
+    authorize @bulletin
   end
 
   # GET /bulletins/new
   def new
     @bulletin = Bulletin.new
+    
   end
 
   # GET /bulletins/1/edit
   def edit
+    authorize @bulletin
   end
 
   # POST /bulletins or /bulletins.json
@@ -36,6 +40,8 @@ class BulletinsController < ApplicationController
 
   # PATCH/PUT /bulletins/1 or /bulletins/1.json
   def update
+    authorize @bulletin
+
     respond_to do |format|
       if @bulletin.update(bulletin_params)
         format.html { redirect_to bulletin_url(@bulletin), notice: "Bulletin was successfully updated." }
@@ -49,6 +55,7 @@ class BulletinsController < ApplicationController
 
   # DELETE /bulletins/1 or /bulletins/1.json
   def destroy
+    authorize @bulletin
     @bulletin.destroy
 
     respond_to do |format|
