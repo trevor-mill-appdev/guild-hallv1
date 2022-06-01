@@ -8,6 +8,7 @@ class VotesController < ApplicationController
 
   # GET /votes/1 or /votes/1.json
   def show
+    authorize @vote
   end
 
   # GET /votes/new
@@ -17,6 +18,7 @@ class VotesController < ApplicationController
 
   # GET /votes/1/edit
   def edit
+    authorize @vote
   end
 
   # POST /votes or /votes.json
@@ -36,6 +38,8 @@ class VotesController < ApplicationController
 
   # PATCH/PUT /votes/1 or /votes/1.json
   def update
+    authorize @vote
+
     respond_to do |format|
       if @vote.update(vote_params)
         format.html { redirect_to vote_url(@vote), notice: "Vote was successfully updated." }
@@ -49,6 +53,8 @@ class VotesController < ApplicationController
 
   # DELETE /votes/1 or /votes/1.json
   def destroy
+    authorize @vote
+    
     @vote.destroy
 
     respond_to do |format|
