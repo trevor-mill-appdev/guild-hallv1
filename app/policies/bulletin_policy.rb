@@ -16,5 +16,13 @@ class BulletinPolicy
     user.id == bulletin.author_id
   end
 
+  def update?
+    user.id == bulletin.author_id
+  end
+
+  def destroy?
+    user.id == bulletin.author_id
+  end
+
 
 end
