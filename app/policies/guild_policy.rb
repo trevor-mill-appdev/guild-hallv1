@@ -15,4 +15,9 @@ class GuildPolicy
   def edit?
     user == guild.owner
   end
+
+  def update?
+    user == guild.owner
+  end
+
 end

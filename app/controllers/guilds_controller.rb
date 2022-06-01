@@ -38,6 +38,8 @@ class GuildsController < ApplicationController
 
   # PATCH/PUT /guilds/1 or /guilds/1.json
   def update
+    authorize @guild
+
     respond_to do |format|
       if @guild.update(guild_params)
         format.html { redirect_to guild_url(@guild), notice: "Guild was successfully updated." }
@@ -51,6 +53,7 @@ class GuildsController < ApplicationController
 
   # DELETE /guilds/1 or /guilds/1.json
   def destroy
+
     @guild.destroy
 
     respond_to do |format|
