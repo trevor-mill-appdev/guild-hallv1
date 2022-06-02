@@ -23,9 +23,11 @@
       <%= current_user.guild.name %> has proposals pending your approval. Head to your guild page to vote!
     </div>
     <% @needs_vote.each do |proposal| %>
-      <div class="card">
-        <div class="card-body">
-          <%= proposal.body %>
+      <div class="pb-2">
+        <div class="card">
+          <div class="card-body">
+            <%= proposal.body %>
+          </div>
         </div>
       </div>
     <% end %>
