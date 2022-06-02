@@ -11,5 +11,12 @@
 </ul>
 
 <h2>Stash</h2>
+<ul>
+  <% current_user.stashes.each do |stash| %>
+    <li>
+      <%= Material.where(:id => stash.material_id ).first.name %>: <%= stash.quantity %>
+    </li>
+  <% end %>
+</ul>
 
 <h2>Inbox</h2>
