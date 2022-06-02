@@ -14,4 +14,31 @@
   </ul>
 </div>
 
-<%= current_user.username %>'s Inbox!
+
+
+<div class="container-fluid">
+  <div class="row row-cols-1 row-cols-md-1 g-4">
+  <% if @needs_vote.length > 0 %>
+    <div class="alert alert-warning" role="alert">
+      <%= current_user.guild.name %> has proposals pending your approval. Head to your guild page to vote!
+    </div>
+    <% @needs_vote.each do |proposal| %>
+      <div class="card">
+        <div class="card-body">
+          <%= proposal.body %>
+        </div>
+      </div>
+    <% end %>
+  <% else %>
+    <div class="alert alert-success" role="alert">
+      <%= current_user.guild.name %> currently has no proposals pending your approval. Check back later!
+    </div>
+  <% end %>
+  <% current_user.guild.proposals.where do |raider| %>
+    <%= render "raiders/raider", raider: raider %>
+  <% end %>
+  </div>
+</div>
+
+Look to add conditional text with count of proposals requiring a user vote.
+Render priority messages with special border
