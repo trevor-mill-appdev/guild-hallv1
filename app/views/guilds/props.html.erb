@@ -1,19 +1,37 @@
-<div class="container-fluid pb-3">
-  <ul class="nav nav-pills nav-justified">
-    <li class="nav-item">
-      <a class="nav-link" aria-current="page" href="/guild"><%= @guild.name %></a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="/bulletin">Bulletin board</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link active" href="/proposals">Proposals</a>
-    </li>
-  </ul>
-</div>
+<div class="container-fluid">
+  <div class="container-fluid pb-3">
+    <ul class="nav nav-pills nav-justified">
+      <li class="nav-item">
+        <a class="nav-link" aria-current="page" href="/guild"><%= @guild.name %></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/bulletin">Bulletin board</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" href="/proposals">Proposals</a>
+      </li>
+    </ul>
+  </div>
 
-<ul>
-  <% @matching_proposals.each do |proposal|%>
-    <%= render "guilds/proposal", proposal: proposal %>
-  <%end %>
-</ul>
+  <h3 class="pb-2 pt-2 text-center">Pending proposals</h3>
+  <div class="container-fluid pb-3">
+    <div class="row row-cols-1 row-cols-md-2 g-4">
+    <% current_user.pending_proposals.each do |proposal|%>
+      <div class="container-fluid pb-2">
+        <%= render "guilds/proposal", proposal: proposal %>
+      </div>
+    <%end %>
+    </div>
+  </div>
+
+  <h3 class="pb-2 pt-2 text-center">Past votes</h3>
+  <div class="container-fluid pb-3">
+    <div class="row row-cols-1 row-cols-md-2 g-4">
+    <% current_user.resolved_proposals.each do |proposal|%>
+      <div class="container-fluid pb-2">
+        <%= render "guilds/proposal", proposal: proposal %>
+      </div>
+    <%end %>
+    </div>
+  </div>
+</div>
