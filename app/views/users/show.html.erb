@@ -1,6 +1,14 @@
 <h1><%= current_user.username %>'s Landing Page</h1>
 
 <h2>Raiders</h2>
+<ul>
+  <% current_user.raiders.each do |raider| %>
+    <li>
+      <%= raider.serial %>
+      <%= image_tag raider.image %>
+    </li>
+  <% end %>
+</ul>
 
 <h2>Stash</h2>
 
