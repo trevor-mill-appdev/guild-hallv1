@@ -42,6 +42,19 @@ class GuildsController < ApplicationController
   def props
     @guild = Guild.where(:id => current_user.guild.id).first
     @matching_proposals = Proposal.where(:guild_id => @guild.id).all
+
+    # @needs_vote = Array.new
+
+    # proposals = current_user.pending_proposals.all
+
+    # proposals.each do |proposal|
+    #   has_voted = current_user.votes.where(:proposal_id => proposal.id).first
+
+    #   if !has_voted
+    #     @needs_vote << proposal    
+    #   end
+
+    # end
   end
 
   # GET /guilds/new

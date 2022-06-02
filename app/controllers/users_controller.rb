@@ -23,4 +23,6 @@ class UsersController < ApplicationController
   def guild
   end
 
+
+
 end
