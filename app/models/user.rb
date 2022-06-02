@@ -28,7 +28,7 @@ class User < ApplicationRecord
   def pending_proposals
     needs_vote = Array.new
 
-    proposals = current_user.guild.proposals.where(:status => "pending").all
+    proposals = self.guild.proposals.where(:status => "pending").all #change current_user to self
 
     proposals.each do |proposal|
       has_voted = current_user.votes.where(:proposal_id => proposal.id).first
