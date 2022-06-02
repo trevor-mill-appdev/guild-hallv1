@@ -1,0 +1,17 @@
+<%= form_with(model: warchest) do |form| %>
+  <% if warchest.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(warchest.errors.count, "error") %> prohibited this warchest from being saved:</h2>
+
+      <ul>
+        <% warchest.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

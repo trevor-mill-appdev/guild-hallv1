@@ -8,6 +8,15 @@ class GuildsController < ApplicationController
 
   # GET /guilds/1 or /guilds/1.json
   def show
+
+    # aggregate member stashes to render partials on guild page
+    Material.all do |material|
+      Stash.create(
+        owner_id: @guild.id,
+        material_id: material.id,
+        quantity: 6
+      )
+    end
   end
 
   # bulletin page

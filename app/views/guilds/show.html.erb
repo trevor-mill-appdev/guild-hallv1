@@ -24,6 +24,15 @@
   </div>
 </div>
 
+
 <div class="container-fluid">
   <h1>stashes</h1>
+</div>
+
+<div class="container-fluid pb-5">
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+  <% @guild.stashes.each do |member| %>
+    <%= render "guilds/member", member: member %>
+  <% end %>
+  </div>
 </div>
