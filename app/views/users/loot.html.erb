@@ -14,4 +14,10 @@
   </ul>
 </div>
 
-<%= current_user.username %>'s Loot!
+<div class="container-fluid">
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+  <% current_user.stashes.each do |stash| %>
+    <%= render "stashes/stash", stash: stash %>
+  <% end %>
+  </div>
+</div>
