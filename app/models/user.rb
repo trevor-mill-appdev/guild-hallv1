@@ -16,5 +16,13 @@ class User < ApplicationRecord
 
   validates :username, presence: true, uniqueness: true
   validates :password, presence: true
+
+  def stashes
+    my_id = self.id
+
+    matching_stashes = Stash.where(:owner_id => my_id).all
+
+    return matching_stashes
+  end
   
 end

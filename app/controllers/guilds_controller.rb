@@ -11,12 +11,35 @@ class GuildsController < ApplicationController
 
     # aggregate member stashes to render partials on guild page
     materials = Material.all
+    members = User.where(:guild_id => @guild.id).all
+    quantities = Array.new
+
+    materials.each do |material|
+      mat_stash = Array.new
+      @material = material
+      members.each do |member|
+        matching_stash = Stash.where(:material_id => @material.id).where(:owner_id => member.id).first
+
+        mat_stash << matching_stash
+      end
+      quantities << mat_stash
+    end
+
+    index = 0
+
+    chests = Warchest.where(:guild_id => @guild.id)
+    chests.each do |chest|
+      c = Warchest.where(:id => chest.id).first
+      c.destroy
+    end
+    
     materials.each do |material|
       Warchest.create(
         guild_id: @guild.id,
         material_id: material.id,
-        quantity: 6
+        quantity: quantities[index]
       )
+      index += 1
     end
   end
 
