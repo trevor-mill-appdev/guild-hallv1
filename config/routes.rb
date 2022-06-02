@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root "users#show"
 
   get ":username/inbox" => "inbox#show", as: :inbox
-  get ":username" => "users#show", as: :user
+  get "home" => "users#show", as: :user
  
   devise_for :users
 
