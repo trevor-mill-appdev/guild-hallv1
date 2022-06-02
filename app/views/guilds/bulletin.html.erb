@@ -16,6 +16,6 @@
 
 <ul>
   <% @matching_proposals.each do |proposal|%>
-    <li><%= proposal %></li>
+    <%= render "guilds/proposal", proposal: proposal %>
   <%end %>
 </ul>
