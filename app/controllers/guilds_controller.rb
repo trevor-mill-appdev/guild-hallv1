@@ -35,12 +35,13 @@ class GuildsController < ApplicationController
   # bulletin page
   def bulletin
     @guild = Guild.where(:id => current_user.guild.id).first
-    @matching_proposals = Proposal.where(:guild_id => @guild.id).all
+    
   end
 
   # proposals
   def props
     @guild = Guild.where(:id => current_user.guild.id).first
+    @matching_proposals = Proposal.where(:guild_id => @guild.id).all
   end
 
   # GET /guilds/new
