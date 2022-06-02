@@ -23,7 +23,7 @@ task sample_data: :environment do
     usernames << Faker::Name.first_name
   end
 
-  # generate set users for guild admin accounts
+  # generate set users alice and bob for guild admin accounts
 
   User.create(
     username: "bob",
@@ -86,7 +86,7 @@ task sample_data: :environment do
 
   materials = Material.all
 
-  # create a guild
+  # create guilds
   Guild.create(
     admin_id: User.where(:username => "bob").first.id,
     prop_threshold: rand(3),
@@ -131,6 +131,33 @@ task sample_data: :environment do
         material_id: material.id,
         quantity: rand(100)
       )
+    end
+  end
+
+  # create props for users
+  users.each do |user|
+    if rand < 0.25
+      Proposal.create(
+        proposer_id: user.id,
+        guild_id: user.guild_id,
+        status: "pending",
+        body: Faker::Lorem.paragraph(sentence_count: 3)
+      )
+    end
+  end
+
+  # create votes for props
+  guilds.each do |guild|
+    guild.proposals.each do |proposal|
+      guild.members.each do |member|
+        if rand < 0.75
+          Vote.create(
+            voter_id: member.id,
+            proposal_id: proposal.id,
+            value: ["abstain", "nay", "yay"].sample
+          )
+        end
+      end
     end
   end
 
