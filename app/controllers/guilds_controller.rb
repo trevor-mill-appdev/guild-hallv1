@@ -8,7 +8,8 @@ class GuildsController < ApplicationController
 
   # GET /guilds/1 or /guilds/1.json
   def show
-    authorize @guild
+    
+    
   end
 
   # GET /guilds/new
@@ -65,7 +66,7 @@ class GuildsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_guild
-      @guild = Guild.find(params[:id])
+      @guild = Guild.where(:id => current_user.guild.id).first
     end
 
     # Only allow a list of trusted parameters through.

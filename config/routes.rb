@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get "/inbox" => "users#inbox"
   get "/home" => "users#show"
   get "/stash" => "users#loot"
-  get "/guild" => "users#guild"
+  get "/guild" => "guilds#show"
  
   devise_for :users
 

@@ -1,24 +1,13 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @guild.name %>
-</p>
-
-<p>
-  <strong>Admin:</strong>
-  <%= @guild.owner.username %>
-</p>
-
-<p>
-  <strong>Prop threshold:</strong>
-  <%= @guild.prop_threshold %>
-</p>
-
-<p>
-  <strong>Private:</strong>
-  <%= @guild.private %>
-</p>
-
-<%= link_to 'Edit', edit_guild_path(@guild) %> |
-<%= link_to 'Back', guilds_path %>
+<div class="container-fluid pb-3">
+  <ul class="nav nav-pills nav-justified">
+    <li class="nav-item">
+      <a class="nav-link active" aria-current="page" href="/home">Raiders</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/stash">Stash</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/inbox">Inbox</a>
+    </li>
+  </ul>
+</div>
