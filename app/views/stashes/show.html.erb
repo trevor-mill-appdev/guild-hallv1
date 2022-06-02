@@ -1,19 +1,10 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Owner:</strong>
-  <%= @stash.owner_id %>
-</p>
-
-<p>
-  <strong>Material:</strong>
-  <%= @stash.material_id %>
-</p>
-
-<p>
-  <strong>Quantity:</strong>
-  <%= @stash.quantity %>
-</p>
-
-<%= link_to 'Edit', edit_stash_path(@stash) %> |
-<%= link_to 'Back', stashes_path %>
+<h2>Stash</h2>
+<ul>
+  <% current_user.stashes.each do |stash| %>
+    <li>
+      <%= Material.where(:id => stash.material_id ).first.name %>: <%= stash.quantity %>
+    </li>
+  <% end %>
+</ul>

@@ -1,31 +1,30 @@
-<h1><%= current_user.username %>'s Landing Page</h1>
-
+<div class="container-fluid">
+  <ul class="nav nav-pills nav-justified">
+    <li class="nav-item">
+      <a class="nav-link active" aria-current="page" href="/home">Raiders</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/stash">Stash</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/inbox">Inbox</a>
+    </li>
+  </ul>
+</div>
 
 
 <h2>Raiders</h2>
+<div class="container-fluid">
+  <div class="row row-cols-1 row-cols-md-3 g-4">
   <% current_user.raiders.each do |raider| %>
-      <div class="row">
-        <div class="col-md-6 offset-md-3">
-          <div class="card">
-            <img src="<%= raider.image %>" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Raider name: <%= raider.serial %></h5>
-              <p class="card-text">Potentially change to a card list with Raider statistics.</p>
-            </div>
-          </div>
+    <div class="col pb-3">
+      <div class="card">
+        <img src="<%= raider.image %>" class="card-img-top" alt="...">
+        <div class="card-body border">
+          <h5 class="card-title">Raider name: <%= raider.serial %></h5>
+          <p class="card-text">Potentially change to a card list with Raider statistics.</p>
         </div>
       </div>
+    </div>
   <% end %>
-
-
-<h2>Stash</h2>
-<ul>
-  <% current_user.stashes.each do |stash| %>
-    <li>
-      <%= Material.where(:id => stash.material_id ).first.name %>: <%= stash.quantity %>
-    </li>
-  <% end %>
-</ul>
-
-<h2>Inbox</h2>
-Add link to inbox#show. Ajaxify later.
+  </div>

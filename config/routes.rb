@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
   root "users#show"
 
-  get ":username/inbox" => "inbox#show", as: :inbox
-  get "home" => "users#show", as: :user
+  get "/inbox" => "users#inbox"
+  get "/home" => "users#show"
+  get "/stash" => "users#loot"
  
   devise_for :users
 
