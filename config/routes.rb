@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  root "users#show"
+
+  get ":username/inbox" => "inbox#show", as: :inbox
+  get ":username" => "users#show", as: :user
+ 
   devise_for :users
 
   resources :bulletins
@@ -9,10 +14,8 @@ Rails.application.routes.draw do
   resources :mobs
   resources :raiders
   resources :materials
-  resources :users
-  root "landing#show"
+  resources :users, only: :show
+  
 
-  get ":username/inbox" => "inbox#show", as: :inbox
-  get ":username/home" => "landing#show", as: :landing
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
