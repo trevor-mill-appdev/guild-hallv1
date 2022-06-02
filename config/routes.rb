@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   get "/home" => "users#show"
   get "/stash" => "users#loot"
   get "/guild" => "guilds#show"
+  get "/bulletin" => "guilds#bulletin"
+  get "/proposals" => "guilds#props"
  
   devise_for :users
 

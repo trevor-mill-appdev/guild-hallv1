@@ -8,8 +8,16 @@ class GuildsController < ApplicationController
 
   # GET /guilds/1 or /guilds/1.json
   def show
-    
-    
+  end
+
+  # bulletin page
+  def bulletin
+    @guild = Guild.where(:id => current_user.guild.id).first
+  end
+
+  # proposals
+  def props
+    @guild = Guild.where(:id => current_user.guild.id).first
   end
 
   # GET /guilds/new
