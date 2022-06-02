@@ -10,9 +10,10 @@ class GuildsController < ApplicationController
   def show
 
     # aggregate member stashes to render partials on guild page
-    Material.all do |material|
-      Stash.create(
-        owner_id: @guild.id,
+    materials = Material.all
+    materials.each do |material|
+      Warchest.create(
+        guild_id: @guild.id,
         material_id: material.id,
         quantity: 6
       )

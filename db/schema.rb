@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_23_180955) do
+ActiveRecord::Schema.define(version: 2022_06_02_140932) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -110,6 +110,16 @@ ActiveRecord::Schema.define(version: 2022_05_23_180955) do
     t.index ["voter_id"], name: "index_votes_on_voter_id"
   end
 
+  create_table "warchests", force: :cascade do |t|
+    t.bigint "guild_id", null: false
+    t.bigint "material_id", null: false
+    t.integer "quantity"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["guild_id"], name: "index_warchests_on_guild_id"
+    t.index ["material_id"], name: "index_warchests_on_material_id"
+  end
+
   add_foreign_key "bulletins", "guilds"
   add_foreign_key "bulletins", "users", column: "author_id"
   add_foreign_key "guilds", "users", column: "admin_id"
@@ -121,4 +131,6 @@ ActiveRecord::Schema.define(version: 2022_05_23_180955) do
   add_foreign_key "stashes", "users", column: "owner_id"
   add_foreign_key "votes", "proposals"
   add_foreign_key "votes", "users", column: "voter_id"
+  add_foreign_key "warchests", "guilds"
+  add_foreign_key "warchests", "materials"
 end

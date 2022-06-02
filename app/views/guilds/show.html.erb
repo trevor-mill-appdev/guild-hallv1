@@ -31,8 +31,8 @@
 
 <div class="container-fluid pb-5">
   <div class="row row-cols-1 row-cols-md-3 g-4">
-  <% @guild.stashes.each do |member| %>
-    <%= render "guilds/member", member: member %>
+  <% @guild.warchests.each do |warchest| %>
+    <%= render "guilds/warchest", warchest: warchest %>
   <% end %>
   </div>
 </div>
