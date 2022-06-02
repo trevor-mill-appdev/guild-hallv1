@@ -71,6 +71,16 @@ task sample_data: :environment do
     token_address: "0xe0df35dd951aea2edb96eae88e7e0652a1729acc"
   )
 
+  Material.create(
+    name: "$Aurum",
+    token_address: "0x34d4ab47bee066f361fa52d792e69ac7bd05ee23"
+  )
+
+  Material.create(
+    name: "$Raider",
+    token_address: "0xcd7361ac3307d1c5a46b63086a90742ff44c63b3"
+  )
+
   materials = Material.all
 
   # create guilds
