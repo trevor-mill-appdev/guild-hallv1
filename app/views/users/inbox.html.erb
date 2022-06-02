@@ -36,9 +36,6 @@
       <%= current_user.guild.name %> currently has no proposals pending your approval. Check back later!
     </div>
   <% end %>
-  <% current_user.guild.proposals.where do |raider| %>
-    <%= render "raiders/raider", raider: raider %>
-  <% end %>
   </div>
 </div>
 

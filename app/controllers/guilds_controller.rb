@@ -20,11 +20,13 @@ class GuildsController < ApplicationController
       c.destroy
     end
 
+    materials = Material.all
+
     materials.each do |material|
       Warchest.create(
         guild_id: @guild.id,
         material_id: material.id,
-        quantity: quantities[index]
+        quantity: 0
       )
       index += 1
     end
@@ -33,6 +35,7 @@ class GuildsController < ApplicationController
   # bulletin page
   def bulletin
     @guild = Guild.where(:id => current_user.guild.id).first
+    @matching_proposals = Proposal.where(:guild_id => @guild.id).all
   end
 
   # proposals

@@ -13,3 +13,9 @@
 </div>
 
 <h1>Bulletin board</h1>
+
+<ul>
+  <% @matching_proposals.each do |proposal|%>
+    <li><%= proposal %></li>
+  <%end %>
+</ul>
