@@ -43,20 +43,7 @@ task sample_data: :environment do
     guild_id: 2
   )
 
-  # generate random users sorted between the guilds
 
-   usernames.each do |username|
-    User.create(
-      email: "#{username}@example.com",
-      password: "password",
-      username: username.downcase,
-      image: "https://robohash.org/#{rand(9999)}",
-      wallet: "sample_wallet_address",
-      guild_id: rand(2)
-    )
-    end
-
-  users = User.all
 
   # create materials
   Material.create(
@@ -101,10 +88,29 @@ task sample_data: :environment do
     name: "Alice\'s Wonderland"
   )
   guilds = Guild.all
+  guild_list = Array.new
+  guilds.each do |guild|
+    guild_list << guild.id
+  end
+
+  # generate random users sorted between the guilds
+
+  usernames.each do |username|
+    User.create(
+      email: "#{username}@example.com",
+      password: "password",
+      username: username.downcase,
+      image: "https://robohash.org/#{rand(9999)}",
+      wallet: "sample_wallet_address",
+      guild_id: guild_list.sample
+    )
+    end
+
+  users = User.all
   
   # create raiders and mobs for users
   users.each do |user|
-    rand(5).times do
+    rand(10).times do
       user.raiders.create(
         serial: rand(9999),
         image: "https://loremflickr.com/320/320?random=#{rand(999)}",
@@ -164,6 +170,8 @@ task sample_data: :environment do
   raiders = Raider.all
   mobs = Mob.all
   stashes = Stash.all
+  votes = Vote.all
+  proposals = Proposal.all
 
   ending = Time.now
   p "It took #{(ending - starting).to_i} seconds to create sample data."
@@ -172,5 +180,6 @@ task sample_data: :environment do
   p "There are now #{Raider.count} raiders."
   p "There are now #{Mob.count} mobs."
   p "There are now #{Stash.count} stashes."
+  p "There are now #{Vote.count} votes on #{Proposal.count} proposals."
 
 end
