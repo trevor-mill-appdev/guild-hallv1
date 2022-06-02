@@ -60,27 +60,27 @@ task sample_data: :environment do
 
   # create materials
   Material.create(
-    name: "grimweed",
+    name: "Grimweed",
     token_address: "0x06F34105B7DfedC95125348A8349BdA209928730"
   )
 
   Material.create(
-    name: "eyeofnewt",
+    name: "Eye of Newt",
     token_address: "0x1346FdB62241e238Be9F84A2FC364c0657757015"
   )
 
   Material.create(
-    name: "mhp",
+    name: "Minor Health Potion",
     token_address: "0x919b22450c38108bb624c4c72b085cd7c0442b80"
   )
 
   Material.create(
-    name: "bhp",
+    name: "Basic Health Potion",
     token_address: "0xe3d73635cf43551d245a551c8cf909a8475299bb"
   )
 
   Material.create(
-    name: "sporebark",
+    name: "Sporebark",
     token_address: "0xe0df35dd951aea2edb96eae88e7e0652a1729acc"
   )
 
