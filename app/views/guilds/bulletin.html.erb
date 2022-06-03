@@ -14,12 +14,12 @@
 
 <h3 class="pb-2 pt-2 text-center"><%= @guild.name %> bulletin board</h3>
 <a href="bulletins/new">
-  <button type="button" class="btn btn-light" href="bulletins/new">Create a bulletin</button>
+  <button type="button" class="btn btn-light mb-3" href="bulletins/new">Create a bulletin</button>
 </a>
 <div class="container-fluid pb-3">
   <div class="row row-cols-1 row-cols-md-2 g-4">
     <% @guild.bulletins.each do |bulletin|%>
-      <div class="container-fluid pb-2">
+      <div class="container-fluid mb-2">
         <%= render "bulletins/bulletin", bulletin: bulletin %>
       </div>
     <%end %>

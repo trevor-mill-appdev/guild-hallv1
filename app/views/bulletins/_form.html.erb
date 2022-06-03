@@ -12,8 +12,8 @@
   <% end %>
 
 
-  <%= bulletin.author_id = current_user.id %>
-  <%= bulletin.guild_id = current_user.guild_id %>
+  <% bulletin.author_id = current_user.id %>
+  <% bulletin.guild_id = current_user.guild_id %>
   <%= form.hidden_field :guild_id %>
   <%= form.hidden_field :author_id %>
 
@@ -24,7 +24,7 @@
 
   <div class="field">
     <%= form.label :priority %>
-    <%= form.radial :priority %>
+    <%= form.radio_button :priority, "Priority" %>
   </div>
 
   <div class="actions">

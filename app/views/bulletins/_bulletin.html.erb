@@ -1,1 +1,20 @@
-<%= bulletin.body %>
+<% if bulletin.priority? %>
+  <div class="card text-center border-danger pb-3">
+    <div class="card-body">
+      <div class="card-text pb-2">
+        Priority message!
+      </div>
+      <div class="card-text">
+        <%= bulletin.body %>
+      </div>
+    </div>
+  </div>
+<% else %>
+  <div class="card text-center pb-3">
+    <div class="card-body">
+      <div class="card-text">
+        <%= bulletin.body %>
+      </div>
+    </div>
+  </div>
+<% end %>
