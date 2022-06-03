@@ -19,7 +19,7 @@
       <div class="row row-cols-1 row-cols-md-2 g-4">
         <% current_user.pending_proposals.each do |proposal|%>
           <div class="container-fluid pb-2">
-            <%= render "guilds/proposal", proposal: proposal %>
+            <%= render "guilds/pending_proposal", proposal: proposal %>
           </div>
         <% end %>
       </div>
@@ -36,7 +36,7 @@
       <div class="row row-cols-1 row-cols-md-2 g-4">
       <% current_user.resolved_proposals.each do |proposal|%>
         <div class="container-fluid pb-2">
-          <%= render "guilds/proposal", proposal: proposal %>
+          <%= render "guilds/resolved_proposal", proposal: proposal %>
         </div>
       <%end %>
     <% else %>
