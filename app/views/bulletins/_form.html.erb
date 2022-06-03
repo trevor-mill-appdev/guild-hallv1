@@ -11,15 +11,11 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :guild_id %>
-    <%= form.text_field :guild_id %>
-  </div>
 
-  <div class="field">
-    <%= form.label :author_id %>
-    <%= form.text_field :author_id %>
-  </div>
+  <% bulletin.author_id = current_user.id %>
+  <% bulletin.guild_id = current_user.guild_id %>
+  <%= form.hidden_field :guild_id %>
+  <%= form.hidden_field :author_id %>
 
   <div class="field">
     <%= form.label :body %>
@@ -28,7 +24,7 @@
 
   <div class="field">
     <%= form.label :priority %>
-    <%= form.text_field :priority %>
+    <%= form.radio_button :priority, "Priority" %>
   </div>
 
   <div class="actions">
