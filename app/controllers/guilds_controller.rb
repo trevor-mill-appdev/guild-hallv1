@@ -8,7 +8,53 @@ class GuildsController < ApplicationController
 
   # GET /guilds/1 or /guilds/1.json
   def show
-    authorize @guild
+
+    # aggregate member stashes to render partials on guild page
+   
+    # destroy and create guild warchests
+    index = 0
+
+    chests = Warchest.where(:guild_id => @guild.id)
+    chests.each do |chest|
+      c = Warchest.where(:id => chest.id).first
+      c.destroy
+    end
+
+    materials = Material.all
+
+    materials.each do |material|
+      Warchest.create(
+        guild_id: @guild.id,
+        material_id: material.id,
+        quantity: 0
+      )
+      index += 1
+    end
+  end
+
+  # bulletin page
+  def bulletin
+    @guild = Guild.where(:id => current_user.guild.id).first
+    
+  end
+
+  # proposals
+  def props
+    @guild = Guild.where(:id => current_user.guild.id).first
+    @matching_proposals = Proposal.where(:guild_id => @guild.id).all
+
+    # @needs_vote = Array.new
+
+    # proposals = current_user.pending_proposals.all
+
+    # proposals.each do |proposal|
+    #   has_voted = current_user.votes.where(:proposal_id => proposal.id).first
+
+    #   if !has_voted
+    #     @needs_vote << proposal    
+    #   end
+
+    # end
   end
 
   # GET /guilds/new
@@ -65,7 +111,7 @@ class GuildsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_guild
-      @guild = Guild.find(params[:id])
+      @guild = Guild.where(:id => current_user.guild.id).first
     end
 
     # Only allow a list of trusted parameters through.

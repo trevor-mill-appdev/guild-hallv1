@@ -6,6 +6,7 @@ class Guild < ApplicationRecord
   has_many :bulletins, foreign_key: :guild_id, dependent: :nullify
   has_many :members, class_name: "User", foreign_key: :guild_id, dependent: :nullify
   has_many :proposals, foreign_key: :guild_id, dependent: :destroy
+  has_many :warchests
 
   
 end

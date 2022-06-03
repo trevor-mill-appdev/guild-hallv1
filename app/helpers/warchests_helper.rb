@@ -1,0 +1,2 @@
+module WarchestsHelper
+end

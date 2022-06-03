@@ -1,0 +1,43 @@
+
+
+<div class="container-fluid pb-3">
+  <ul class="nav nav-pills nav-justified">
+    <li class="nav-item">
+      <a class="nav-link" aria-current="page" href="/home">Raiders</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/stash">Stash</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link active" href="/inbox">Inbox</a>
+    </li>
+  </ul>
+</div>
+
+
+
+<div class="container-fluid">
+  <div class="row row-cols-1 row-cols-md-1 g-4">
+  <% if @needs_vote.length > 0 %>
+    <div class="alert alert-warning" role="alert">
+      <%= current_user.guild.name %> has proposals pending your approval. Head to your guild page to vote!
+    </div>
+    <% @needs_vote.each do |proposal| %>
+      <div class="pb-2">
+        <div class="card">
+          <div class="card-body">
+            <%= proposal.body %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <% else %>
+    <div class="alert alert-success" role="alert">
+      <%= current_user.guild.name %> currently has no proposals pending your approval. Check back later!
+    </div>
+  <% end %>
+  </div>
+</div>
+
+Look to add conditional text with count of proposals requiring a user vote.
+Render priority messages with special border

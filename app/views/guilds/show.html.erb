@@ -1,24 +1,38 @@
-<p id="notice"><%= notice %></p>
+<div class="container-fluid pb-3">
+  <ul class="nav nav-pills nav-justified">
+    <li class="nav-item">
+      <a class="nav-link active" aria-current="page" href="/guild"><%= @guild.name %></a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/bulletin">Bulletin board</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/proposals">Proposals</a>
+    </li>
+  </ul>
+</div>
 
-<p>
-  <strong>Name:</strong>
-  <%= @guild.name %>
-</p>
+<div class="container-fluid">
+  <h3 class="pb-2 pt-2 text-center">Members</h3>
+</div>
 
-<p>
-  <strong>Admin:</strong>
-  <%= @guild.owner.username %>
-</p>
+<div class="container-fluid pb-5">
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+  <% @guild.members.each do |member| %>
+    <%= render "guilds/member", member: member %>
+  <% end %>
+  </div>
+</div>
 
-<p>
-  <strong>Prop threshold:</strong>
-  <%= @guild.prop_threshold %>
-</p>
 
-<p>
-  <strong>Private:</strong>
-  <%= @guild.private %>
-</p>
+<div class="container-fluid">
+  <h3 class="pb-2 pt-2 text-center">War Chest</h3>
+</div>
 
-<%= link_to 'Edit', edit_guild_path(@guild) %> |
-<%= link_to 'Back', guilds_path %>
+<div class="container-fluid pb-5">
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+  <% @guild.warchests.each do |warchest| %>
+    <%= render "guilds/warchest", warchest: warchest %>
+  <% end %>
+  </div>
+</div>

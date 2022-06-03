@@ -11,7 +11,7 @@
         <% if user_signed_in? %>
           <% if current_user.guild_id? %>
             <li class="nav-item">
-              <a class="nav-link" href="/guilds/<%= current_user.guild.id %>"><%= current_user.guild.name%></a>
+              <a class="nav-link" href="/guild"><%= current_user.guild.name%></a>
             </li>
           <% else %>
             <li class="nav-item">
@@ -33,6 +33,7 @@
               <%= current_user.username %>
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <%= link_to "Home", root_path, class: "dropdown-item" %>
               <%= link_to "Edit profile", edit_user_registration_path, class: "dropdown-item" %>
               <%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
             </div>
