@@ -152,7 +152,7 @@ task sample_data: :environment do
 
   # create props for users
   users.each do |user|
-    if rand < 0.25
+    if rand < 0.75
       Proposal.create(
         proposer_id: user.id,
         guild_id: user.guild_id,
@@ -166,7 +166,7 @@ task sample_data: :environment do
   guilds.each do |guild|
     guild.proposals.each do |proposal|
       guild.members.each do |member|
-        if rand < 0.75
+        if rand < 0.9
           Vote.create(
             voter_id: member.id,
             proposal_id: proposal.id,

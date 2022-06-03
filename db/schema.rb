@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 2022_06_02_140932) do
     t.bigint "guild_id", null: false
     t.bigint "author_id", null: false
     t.text "body"
-    t.string "priority"
+    t.boolean "priority"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["author_id"], name: "index_bulletins_on_author_id"
